@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rarasti Dian Pratiwi</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* RESET & GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* HERO SECTION */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap-reverse;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-text h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 10px 0;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .hero-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            min-width: 280px;
+        }
+
+        .hero-img img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* TENTANG SAYA */
+        .about-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+/* PENDIDIKAN */
+        .education-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .edu-icon {
+            width: 50px;
+            height: 50px;
+            background: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .edu-details {
+            flex: 1;
+        }
+
+        .edu-date {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: #eff6ff;
+            padding: 2px 10px;
+            border-radius: 15px;
+            margin-bottom: 8px;
+        }
+
+        .edu-details h3 {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 4px;
+        }
+
+        .edu-details h4 {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .edu-focus {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .edu-bullets {
+            margin-left: 18px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .edu-bullets li {
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .education-card {
+                flex-direction: column;
+            }
+        }
+
+        /* PENGALAMAN (TIMELINE) */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e2e8f0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 13px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content .date {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* PROYEK / PORTOFOLIO */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .project-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .project-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #eff6ff;
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-project {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.3s;
+        }
+
+        .btn-demo {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-demo:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-code {
+            background-color: #e2e8f0;
+            color: var(--text-color);
+        }
+
+        .btn-code:hover {
+            background-color: #cbd5e1;
+        }
+
+        /* KONTAK & FOOTER */
+        #contact {
+            background: #1e293b;
+            color: #fff;
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: #fff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hero-content {
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .nav-links {
+                display: none; /* Bisa dikembangkan dengan hamburger menu jika dibutuhkan */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Rarasti Dian Pratiwi</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#education">Pendidikan</a></li>
+                <li><a href="#experience">Pengalaman</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h3>Halo, Saya</h3>
+                <h1>Rarasti Dian Pratiwi</h1>
+                <p>Electrical Engineering Technology Student at Universitas Gadjah Mada</p>
+                <a href="#contact" class="btn">Hubungi Saya</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG SAYA -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-card">
+                <p>
+                    Saya adalah mahasiswa D-4 Teknologi Rekayasa Elektro di Sekolah Vokasi, Universitas Gadjah Mada. Saya berasal dari Sleman, D. I. Yogyakarta. Saya memiliki minat pada sistem pembangkitan listrik dan energi terbarukan. Saya selalu antusias untuk belajar dan berkolaborasi dalam proyek-proyek rekayasa teknis masa depan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+<!-- PENDIDIKAN -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Pendidikan</h2>
+            <div class="education-grid">
+                
+                <!-- Kartu Pendidikan Utama -->
+                <div class="education-card">
+                    <div class="edu-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="edu-details">
+                        <span class="edu-date">2023 – Sekarang</span>
+                        <h3>Universitas Gadjah Mada</h3>
+                        <h4>Sarjana Terapan (D4) Teknologi Rekayasa Elektro</h4>
+                    </div>
+                </div>
+
+                <!-- Kartu Pendidikan SMA (Opsional) -->
+                <div class="education-card">
+                    <div class="edu-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="edu-details">
+                        <span class="edu-date">2023 – 2026</span>
+                        <h3>SMA Negeri 2 Ngaglik</h3>
+                        <h4>Kurikulum Merdeka — Peminatan Sains & Geospasial</h4>
+                        <p class="edu-focus"><strong>Mata Pelajaran Utama:</strong> Matematika Tingkat Lanjut, Fisika, Geografi, Bahasa Inggris Tingkat Lanjut</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PENGALAMAN KERJA / ORGANISASI -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Pengalaman</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Ketua — Rohis Ar-Rashya</h3>
+                        <span class="date">2024-2025</span>
+                        <p>Memimpin 30 anggota, mengelola perencanaan strategis, eksekusi program kerja keagamaan, serta pengkaderan anggota. Bertanggung jawab atas koordinasi tim, pengawasan kegiatan keagamaan, serta memfasilitasi komunikasi antara pengurus, pihak sekolah, dan pembina.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Sekertaris — Karawitan Laras Asri</h3>
+                        <span class="date">2024-2025</span>
+                        <p>Merencanakan administrasi, koordinasi kegiatan seni tradisional, dan manajemen komunikasi organisasi.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYEK / PORTOFOLIO -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Proyek Saya</h2>
+            <div class="projects-grid">
+                <p>Belum ada proyek yang ditampilkan saat ini. Silakan periksa kembali nanti.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <p>Ingin bekerja sama atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya!</p>
+            <p style="margin-top: 15px;"><strong>Email:</strong> rarastidianpratiwi2007@mail.ugm.ac.id</p>
+            
+            <div class="social-links">
+                <a href="mailto:rarastidianpratiwi2007@mail.ugm.ac.id" title="Kirim Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/rarasti-dian-pratiwi" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/rarastidian07" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/rrraaaa_78" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Rarasti Dian Pratiwi. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
